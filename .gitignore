@@ -1,0 +1,8 @@
+node_modules/
+output/
+browser/
+/playwright-report/
+/blob-report/
+/playwright/.chache/
+.env
+
