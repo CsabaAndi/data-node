@@ -36,23 +36,23 @@ import { matchHistory } from './match-history';
 
       await expect(firstPage.locator("table.playerstats")).toBeVisible();
       await firstPage.content().then((x) => { html = x });
-      //getPlayerTableData(html, x);
+      getPlayerTableData(html, x);
 
       
       await firstPage.getByRole("listitem").filter({hasText: "Over/under"}).click();
       await expect(firstPage.locator("table.overundertable")).toBeVisible();
       await firstPage.content().then((x) => { html = x });
-      //getOverUnderTableData(html, x);
+      getOverUnderTableData(html, x);
 
 
       await firstPage.getByRole("listitem").filter({hasText: "Wide"}).click();
       await expect(firstPage.locator("table.detailed-table.fixed-wide-table")).toBeVisible();
       await firstPage.content().then((x) => { html = x });
-      //getWideTableData(html, x);
+      getWideTableData(html, x);
       
-      //await matchHistory(browserContext, html);
+      await matchHistory(browserContext, html);
       
-      break;
+      //break;
     //TODO
     } catch(error) { 
       if( error instanceof errors.TimeoutError){console.log(`${new Date()} - Timeout Error`)}
@@ -64,6 +64,7 @@ import { matchHistory } from './match-history';
   console.log(`time: ${((Date.now() - start)/1000).toFixed(5)} - sec`);
   console.log("end");
   
+  //await setTimeout(5000);
   await setTimeout(500000);
   
   await browserContext.close();

@@ -43,7 +43,7 @@ function getLeagueTableData(pageHtml: string, urlPart: string[]): any {
     tableData.push(rowData)
   })
   console.log(tableData)
-  //writeToJson(`data/tables/${urlPart[0]}/${urlPart[1]}/LastFive.txt`, tableData);
+  writeToJson(`data/tables/${urlPart[0]}/${urlPart[1]}/LastFive.json`, tableData);
 }
 
 
@@ -71,7 +71,7 @@ function getPlayerTableData(pageHtml: string, urlPart: string[]): void {
     tableData.push(rowData)
   })
   console.log(tableData)
-  //writeToJson(`data/tables/${urlPart[0]}/${urlPart[1]}/Player.txt`, tableData);
+  writeToJson(`data/tables/${urlPart[0]}/${urlPart[1]}/Player.json`, tableData);
 }
 
 
@@ -97,7 +97,7 @@ function getOverUnderTableData(pageHtml: string, urlPart: string[]): void {
     tableData.push(rowData)
   })
   console.log(tableData)
-  writeToJson(`data/tables/${urlPart[0]}/${urlPart[1]}/OverUnder.txt`, tableData);
+  writeToJson(`data/tables/${urlPart[0]}/${urlPart[1]}/OverUnder.json`, tableData);
 }
 
 
@@ -142,7 +142,7 @@ function getWideTableData(pageHtml: string, urlPart: string[]): void {
         
   })
   //console.log(tableData)
-  writeToJson(`data/tables/${urlPart[0]}/${urlPart[1]}/Wide.txt`, tableData);
+  writeToJson(`data/tables/${urlPart[0]}/${urlPart[1]}/Wide.json`, tableData);
 }
 
 /**
