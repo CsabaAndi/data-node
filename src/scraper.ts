@@ -56,7 +56,7 @@ import { matchHistory } from './match-history';
       
       await matchHistory(browserContext, html);
       
-      break;
+      //break;
     //TODO
     } catch(error) { 
 

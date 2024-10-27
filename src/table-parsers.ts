@@ -193,6 +193,7 @@ function getMatchHistoryData(pageHtml: string): void {
  * Calls writeToJson() to write out the data then sets the global array length to 0
  * @returns  Does not return anything
  */
-function emptyArrays(): void { /*writeToJson(`data/tables/${urlPart[0]}/${urlPart[1]}/.txt`, matchHistoryTableData);*/ matchHistoryTableData.length = 0 }
+function emptyArrays(urlPart: string[]): void { writeToJson(`data/match-history/${urlPart[0]}/${urlPart[1]}.json`, matchHistoryTableData); matchHistoryTableData.length = 0 }
+
 
 export { getLeagueTableData, getPlayerTableData, getOverUnderTableData, getWideTableData, getMatchHistoryData, getTeamLinks, emptyArrays }

@@ -12,7 +12,7 @@ import { emptyArrays } from './table-parsers';
  */
 async function matchHistory(context: BrowserContext, html: string) {
     const NON_BREAKING_SPACE = String.fromCharCode(160)
-    const TURN_BACK_PAGES = 2
+    const TURN_BACK_PAGES = 5
     const newPage = await context.newPage();
     /** For checking if new table page data loaded */
     let locatorValue: string;
@@ -21,6 +21,7 @@ async function matchHistory(context: BrowserContext, html: string) {
 
     for await (const teamLink of getTeamLinks(html)){
       await newPage.goto(`https://int.soccerway.com${teamLink}matches/`, {timeout: 10000}) 
+      const x = teamLink.split(`/`).slice(2, 4)
       await expect(newPage.locator("table.matches")).toBeVisible({timeout: 10000});
       const prevButton = newPage.locator(`span.nav_description`).filter({hasText: `Previous`})
       locatorValue = await newPage.locator(`table.matches > tbody > tr:nth-child(1) > td:nth-child(1)`).innerText({timeout: 10000}) 
@@ -39,7 +40,7 @@ async function matchHistory(context: BrowserContext, html: string) {
 
       }while(counter < TURN_BACK_PAGES);
       counter = 0;
-      emptyArrays()
+      emptyArrays(x)
 
     }
     await newPage.close()
