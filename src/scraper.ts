@@ -35,26 +35,26 @@ import { matchHistory } from './match-history';
   
       await expect(firstPage.locator("table.detailed-table")).toBeVisible();
       await firstPage.content().then((x) => { html = x });
-      getLeagueTableData(html, x);
+      //getLeagueTableData(html, x);
 
 
       await expect(firstPage.locator("table.playerstats")).toBeVisible();
       await firstPage.content().then((x) => { html = x });
-      getPlayerTableData(html, x);
+      //getPlayerTableData(html, x);
 
       
       await firstPage.getByRole("listitem").filter({hasText: "Over/under"}).click();
       await expect(firstPage.locator("table.overundertable")).toBeVisible();
       await firstPage.content().then((x) => { html = x });
-      getOverUnderTableData(html, x);
+      //getOverUnderTableData(html, x);
 
 
       await firstPage.getByRole("listitem").filter({hasText: "Wide"}).click();
       await expect(firstPage.locator("table.detailed-table.fixed-wide-table")).toBeVisible();
       await firstPage.content().then((x) => { html = x });
-      getWideTableData(html, x);
+      //getWideTableData(html, x);
       
-      await matchHistory(browserContext, html);
+      await matchHistory(browserContext, html, "base");
       
       //break;
     //TODO

@@ -10,7 +10,7 @@ const BROWSER_CONFIG = {
     viewport: { width: 1920, height: 1080 },
     headless: false,
     args: [
-        `--headless=new` // use this for headless mode
+        //`--headless=new` // use this for headless mode
         /*
         `--disable-extensions-except=${CHROME_EXTENSIONS_PATH_UBLOCK}`,
         `--load-extension=${CHROME_EXTENSIONS_PATH_UBLOCK}` 
