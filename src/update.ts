@@ -1,6 +1,26 @@
 import * as cheerio from 'cheerio';
+import { readFile } from "fs"
 
-// NEED TO IMPLEMENT 
+
+
+// TODO: Placeholder implementation 
+/**
+ * tmp
+ * @param  - Path to file output directory
+ * @param  - Data to write into json file
+ * @returns  Does not return anything
+ */
+function readFromJson(): void {
+
+
+  // read team match history json file
+  readFile("../output/data/match-history/england/chelsea-football-club.json", 'utf8', (error, data) => { if(error){console.log(error)}; console.log(JSON.parse(data)); return; })  
+
+}
+
+
+
+// NEED TO IMPLEMENT  | above readjson
 function readMatchHistory(file: void): void {
     // read match history as dataframe
 
@@ -12,9 +32,18 @@ function writeUpdatedMH(file: void): void {
 }
 
 function compareAndUpdate(dataframe: void): void {
-    // COMPARE older with new data 
-    // if DIFFERENCE --> merge only new rows & old data else NOTHING
-    // write out data if news
+    // read team match history json file
+    // get actual match history data
+    // convert actual data to json format
+    // compare older data with actual json data
+    // if there are new data then
+    // update base file with new match history data
+}
+
+
+function emptyArrays(urlPart: string[]): void {
+    // writeToJson(`data/match-history/${urlPart[0]}/${urlPart[1]}.json`, matchHistoryTableData);
+    // matchHistoryTableData.length = 0 
 };
 
 
@@ -42,3 +71,6 @@ function getMatchHistoryData(pageHtml: string): void {
     // TODO: write to json 
     //console.log(matchHistoryTableData)
   }
+
+
+  export { readFromJson }

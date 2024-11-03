@@ -6,6 +6,7 @@ import { URLS_2023_2024 } from './constans/links';
 import { BROWSER_CONFIG } from './constans/browser.config'
 import { getLeagueTableData, getPlayerTableData, getOverUnderTableData, getWideTableData, getMatchHistoryData, getTeamLinks } from './table-parsers';
 import { matchHistory } from './match-history';
+import { readFromJson } from './update'
 
 
 // TODO: clean imports/exports
@@ -54,9 +55,11 @@ import { matchHistory } from './match-history';
       await firstPage.content().then((x) => { html = x });
       //getWideTableData(html, x);
       
-      await matchHistory(browserContext, html, "base");
+      //await matchHistory(browserContext, html, "base");
+
+      readFromJson()
       
-      //break;
+      break;
     //TODO
     } catch(error) { 
 
