@@ -34,7 +34,7 @@ TODO.md file version: 0.0.1
 
 ### Code Readability & Documentation
 - [ ] Code Readability
-  - [ ] 
+  - [ ] Refactor
 - [ ] Documentation
   - [ ] 
 

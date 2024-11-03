@@ -17,8 +17,8 @@ import { matchHistory } from './match-history';
   const start = Date.now();
   let html: string  = ""; // rename ?
   const browserContext = await chromium.launchPersistentContext(BROWSER_CONFIG.dataDir, {
-    headless: false, userAgent: BROWSER_CONFIG.userAgent, viewport: BROWSER_CONFIG.viewport, 
-    args: BROWSER_CONFIG.args
+    headless: BROWSER_CONFIG.headless, userAgent: BROWSER_CONFIG.userAgent, viewport: BROWSER_CONFIG.viewport, 
+    args: BROWSER_CONFIG.args,
   });
 
   requestResourceBlocking(browserContext);
@@ -29,9 +29,13 @@ import { matchHistory } from './match-history';
       const x = url.split(`/`).slice(4, 6)
       await firstPage.goto(url, {timeout: 0});
       
+      // headless mode debug
+      // await firstPage.screenshot({ path: 'screenshot.png', fullPage: true });
+
+  
       await expect(firstPage.locator("table.detailed-table")).toBeVisible();
       await firstPage.content().then((x) => { html = x });
-      getLeagueTableData(html, x);
+      //getLeagueTableData(html, x);
 
 
       await expect(firstPage.locator("table.playerstats")).toBeVisible();
@@ -50,13 +54,16 @@ import { matchHistory } from './match-history';
       await firstPage.content().then((x) => { html = x });
       //getWideTableData(html, x);
       
-      //await matchHistory(browserContext, html);
+      await matchHistory(browserContext, html, "base");
       
-      break;
+      //break;
     //TODO
     } catch(error) { 
+
+      await firstPage.screenshot({ path: `../output/dev/logs/errors/`+`${new Date()}`+`-error.png`, fullPage: true });
       if( error instanceof errors.TimeoutError){console.log(`${new Date()} - Timeout Error`)}
       console.log(`${new Date()} -> Other Error`)
+      console.log(error)
     }
     
   };
@@ -64,6 +71,7 @@ import { matchHistory } from './match-history';
   console.log(`time: ${((Date.now() - start)/1000).toFixed(5)} - sec`);
   console.log("end");
   
+  //await setTimeout(5000);
   await setTimeout(500000);
   
   await browserContext.close();

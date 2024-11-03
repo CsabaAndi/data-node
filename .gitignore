@@ -5,4 +5,5 @@ browser/
 /blob-report/
 /playwright/.chache/
 .env
-
+/test-results/
+/playwright/.cache/
